@@ -19,6 +19,9 @@ export default function SignIn() {
   };
 
   React.useEffect(() => {
+    if (localStorage.getItem('user')) {
+      navigate('/search');
+    }
     /* global google */
     google.accounts.id.initialize({
       client_id:
