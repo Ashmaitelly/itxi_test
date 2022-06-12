@@ -5,12 +5,17 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme();
 
 export default function SignIn() {
+  //navigation hook
+  const navigate = useNavigate();
+  //set user
   const callbackResponse = (response) => {
-    console.log(response.credential);
+    localStorage.setItem('user', response.credential);
+    navigate('/search');
   };
 
   React.useEffect(() => {
@@ -25,6 +30,7 @@ export default function SignIn() {
       size: 'large',
     });
   }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
