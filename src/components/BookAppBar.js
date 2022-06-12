@@ -14,7 +14,7 @@ export default function BAppBar() {
     if (!localStorage.getItem('user')) {
       navigate('/');
     }
-  }, []);
+  }, [navigate]);
 
   //Logout function
   const Logout = () => {
