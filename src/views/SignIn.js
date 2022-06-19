@@ -24,15 +24,14 @@ export default function SignIn() {
     }
     /* global google */
     google.accounts.id.initialize({
-      client_id:
-        '943775489068-1t3qu1qjrchtgbontkako5u51020ofid.apps.googleusercontent.com',
+      client_id: process.env.REACT_APP_CLIENT_ID,
       callback: callbackResponse,
     });
     google.accounts.id.renderButton(document.getElementById('google-signin'), {
       theme: 'outline',
       size: 'large',
     });
-  }, []);
+  }, [callbackResponse, navigate]);
 
   return (
     <ThemeProvider theme={theme}>
