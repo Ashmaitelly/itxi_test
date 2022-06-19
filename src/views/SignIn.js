@@ -46,7 +46,7 @@ export default function SignIn() {
           }}
         >
           <Typography variant="h3">Book App</Typography>
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}></Avatar>
+          <Avatar sx={{ m: 2, bgcolor: 'secondary.main' }}></Avatar>
           <div id="google-signin" />
         </Box>
       </Container>
