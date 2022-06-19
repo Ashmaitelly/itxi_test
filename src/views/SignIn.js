@@ -31,7 +31,7 @@ export default function SignIn() {
       theme: 'outline',
       size: 'large',
     });
-  }, [callbackResponse, navigate]);
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>

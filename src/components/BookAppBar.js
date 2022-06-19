@@ -22,11 +22,11 @@ export default function BAppBar() {
     navigate('/');
   };
   return (
-    <Box>
+    <Box m={0} p={0}>
       <AppBar position="static">
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Typography variant="h6" component="div">
-            Book App
+            Book Finder
           </Typography>
           <Button color="inherit" onClick={Logout}>
             Logout
