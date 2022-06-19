@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import axios from 'axios';
 import BookCard from '../components/BookCard';
+import Grid from '@mui/material/Grid';
 
 export default function AuthorSearch() {
   //search state
@@ -39,11 +40,71 @@ export default function AuthorSearch() {
           onChange={(e) => setSearch(e.target.value)}
         />
       </Box>
-      <Box
-        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-      >
-        <BookCard />
-      </Box>
+
+      <Grid container spacing={2} sx={{ margin: '0 auto' }}>
+        {/* 5 items start */}
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        <Grid item>
+          <BookCard />
+        </Grid>
+        {/* item end */}
+      </Grid>
     </div>
   );
 }

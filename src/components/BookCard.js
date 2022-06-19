@@ -6,10 +6,11 @@ import Typography from '@mui/material/Typography';
 
 const BookCard = () => {
   return (
-    <Card>
+    <Card sx={{ width: '170px' }}>
       <CardMedia
         component="img"
         height="140"
+        width="160"
         image="/static/images/cards/contemplative-reptile.jpg"
         alt="green iguana"
       />
