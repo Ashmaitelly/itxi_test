@@ -3,12 +3,24 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
 
 const BookCard = ({ data }) => {
+  //state items
   const [volumeInfo] = React.useState(data.volumeInfo);
   const [title] = React.useState(volumeInfo.title);
+  //navigate hook
+  const navigate = useNavigate();
+  //navigate on click
+  const handleClick = () => {
+    navigate(`/book/?id=${data.id}`);
+  };
   return (
-    <Card sx={{ width: '270px' }} className="Clickable">
+    <Card
+      sx={{ width: '270px' }}
+      className="Clickable"
+      onClick={() => handleClick()}
+    >
       <CardMedia
         component="img"
         height="190"

@@ -11,13 +11,20 @@ export default function AuthorSearch() {
   const [search, setSearch] = React.useState('');
   //books array state
   const [books, setBooks] = React.useState([]);
+  //set search on load
+  React.useEffect(() => {
+    setSearch(localStorage.getItem('search') || '');
+  }, []);
   //get books from API with useffect
   React.useEffect(() => {
     if (search !== '') {
-      setSearch(search.replace(' ', '+'));
+      localStorage.setItem('search', search);
       axios
         .get(
-          `https://www.googleapis.com/books/v1/volumes?q=inauthor:"${search}"&filter=free-ebooks` +
+          `https://www.googleapis.com/books/v1/volumes?q=inauthor:"${search.replace(
+            ' ',
+            '+'
+          )}"&filter=free-ebooks` +
             `&key=${process.env.REACT_APP_API_KEY}` +
             '&maxResults=40'
         )
@@ -40,24 +47,22 @@ export default function AuthorSearch() {
           label="Author Search"
           variant="outlined"
           style={{ width: '70%' }}
+          value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
       </Box>
 
       <Grid container spacing={2} sx={{ margin: '0 auto' }}>
-        {/* map items */}
         {books &&
           books
             .sort(
               (a, b) => b.volumeInfo.publishedDate - a.volumeInfo.publishedDate
             )
             .map((book) => (
-              <Grid item>
+              <Grid item key={book.etag}>
                 <BookCard data={book} key={book.id} />
               </Grid>
             ))}
-
-        {/* item end */}
       </Grid>
     </div>
   );
