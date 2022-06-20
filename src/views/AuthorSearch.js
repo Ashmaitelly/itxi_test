@@ -21,7 +21,10 @@ export default function AuthorSearch() {
             `&key=${process.env.REACT_APP_API_KEY}` +
             '&maxResults=40'
         )
-        .then((res) => console.log(res.data.items))
+        .then((res) => {
+          setBooks(res.data.items);
+          console.log(res.data.items);
+        })
         .catch((err) => console.log(err));
     } else {
       setBooks([]);
@@ -42,67 +45,14 @@ export default function AuthorSearch() {
       </Box>
 
       <Grid container spacing={2} sx={{ margin: '0 auto' }}>
-        {/* 5 items start */}
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
-        <Grid item>
-          <BookCard />
-        </Grid>
+        {/* map items */}
+        {books &&
+          books.map((book) => (
+            <Grid item>
+              <BookCard data={book} key={book.id} />
+            </Grid>
+          ))}
+
         {/* item end */}
       </Grid>
     </div>
