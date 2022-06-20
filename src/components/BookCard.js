@@ -7,9 +7,8 @@ import Typography from '@mui/material/Typography';
 const BookCard = ({ data }) => {
   const [volumeInfo] = React.useState(data.volumeInfo);
   const [title] = React.useState(volumeInfo.title);
-  console.log(volumeInfo.publisher);
   return (
-    <Card sx={{ width: '270px' }}>
+    <Card sx={{ width: '270px' }} className="Clickable">
       <CardMedia
         component="img"
         height="190"
@@ -17,7 +16,7 @@ const BookCard = ({ data }) => {
         image={volumeInfo.imageLinks.thumbnail}
         alt="green iguana"
       />
-      <CardContent>
+      <CardContent className="Background">
         <Typography gutterBottom variant="h5" component="div">
           {title.length < 50 ? title : title.substring(0, 50) + '...'}{' '}
           {`(${volumeInfo.publishedDate})`}
