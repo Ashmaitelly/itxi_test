@@ -47,11 +47,15 @@ export default function AuthorSearch() {
       <Grid container spacing={2} sx={{ margin: '0 auto' }}>
         {/* map items */}
         {books &&
-          books.map((book) => (
-            <Grid item>
-              <BookCard data={book} key={book.id} />
-            </Grid>
-          ))}
+          books
+            .sort(
+              (a, b) => b.volumeInfo.publishedDate - a.volumeInfo.publishedDate
+            )
+            .map((book) => (
+              <Grid item>
+                <BookCard data={book} key={book.id} />
+              </Grid>
+            ))}
 
         {/* item end */}
       </Grid>
