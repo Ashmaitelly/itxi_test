@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -18,7 +18,7 @@ export default function SignIn() {
     navigate('/search');
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (localStorage.getItem('user')) {
       navigate('/search');
     }

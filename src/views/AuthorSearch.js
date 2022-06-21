@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import BookAppBar from '../components/BookAppBar';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -8,15 +8,15 @@ import Grid from '@mui/material/Grid';
 
 export default function AuthorSearch() {
   //search state
-  const [search, setSearch] = React.useState('');
+  const [search, setSearch] = useState('');
   //books array state
-  const [books, setBooks] = React.useState([]);
+  const [books, setBooks] = useState([]);
   //set search on load
-  React.useEffect(() => {
+  useEffect(() => {
     setSearch(localStorage.getItem('search') || '');
   }, []);
   //get books from API with useffect
-  React.useEffect(() => {
+  useEffect(() => {
     if (search !== '') {
       localStorage.setItem('search', search);
       axios

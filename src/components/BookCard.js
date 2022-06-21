@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 const BookCard = ({ data }) => {
   //state items
-  const [volumeInfo] = React.useState(data.volumeInfo);
-  const [title] = React.useState(volumeInfo.title);
+  const [volumeInfo] = useState(data.volumeInfo);
+  const [title] = useState(volumeInfo.title);
   //navigate hook
   const navigate = useNavigate();
   //navigate on click

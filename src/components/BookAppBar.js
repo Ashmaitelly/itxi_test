@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,7 +10,7 @@ export default function BAppBar() {
   //navigation hook
   const navigate = useNavigate();
   //Go to landing page if no token
-  React.useEffect(() => {
+  useEffect(() => {
     if (!localStorage.getItem('user')) {
       navigate('/');
     }
