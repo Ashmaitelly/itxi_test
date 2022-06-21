@@ -9,3 +9,8 @@
 .Clickable {
   cursor: pointer;
 }
+
+.Flex-Row {
+  display: flex;
+  flex-direction: row;
+}

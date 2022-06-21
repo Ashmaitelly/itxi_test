@@ -26,7 +26,7 @@ const BookCard = ({ data }) => {
         height="190"
         width="160"
         image={volumeInfo.imageLinks.thumbnail}
-        alt="green iguana"
+        alt={volumeInfo.title}
       />
       <CardContent className="Background">
         <Typography gutterBottom variant="h5" component="div">
