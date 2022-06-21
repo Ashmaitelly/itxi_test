@@ -14,7 +14,7 @@ const BookInfo = () => {
         )}` + `/?key=${process.env.REACT_APP_API_KEY}`
       )
       .then((res) => {
-        console.log(res.data.items);
+        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -22,7 +22,6 @@ const BookInfo = () => {
   return (
     <div>
       <BookAppBar />
-      BookInfo
     </div>
   );
 };

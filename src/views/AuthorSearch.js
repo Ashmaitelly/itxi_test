@@ -26,11 +26,10 @@ export default function AuthorSearch() {
             '+'
           )}"&filter=free-ebooks` +
             `&key=${process.env.REACT_APP_API_KEY}` +
-            '&maxResults=40'
+            '&orderBy=newest&maxResults=40'
         )
         .then((res) => {
           setBooks(res.data.items);
-          console.log(res.data.items);
         })
         .catch((err) => console.log(err));
     } else {
@@ -54,15 +53,11 @@ export default function AuthorSearch() {
 
       <Grid container spacing={2} sx={{ margin: '0 auto' }}>
         {books &&
-          books
-            .sort(
-              (a, b) => b.volumeInfo.publishedDate - a.volumeInfo.publishedDate
-            )
-            .map((book) => (
-              <Grid item key={book.etag}>
-                <BookCard data={book} key={book.id} />
-              </Grid>
-            ))}
+          books.map((book) => (
+            <Grid item key={book.etag}>
+              <BookCard data={book} key={book.id} />
+            </Grid>
+          ))}
       </Grid>
     </div>
   );
