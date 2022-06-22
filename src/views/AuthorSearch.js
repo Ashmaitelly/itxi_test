@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import BookCard from '../components/BookCard';
 import Grid from '@mui/material/Grid';
-import { Typography } from '@mui/material';
 
 export default function AuthorSearch() {
   //search state
@@ -40,7 +39,7 @@ export default function AuthorSearch() {
   }, [search]);
 
   return (
-    <div>
+    <div className="Flex-Col">
       <BookAppBar />
       <Box mt={2} mb={2}>
         <TextField
@@ -53,18 +52,12 @@ export default function AuthorSearch() {
         />
       </Box>
 
-      <Grid container spacing={2} sx={{ margin: '0 auto' }}>
+      <Grid container spacing={2}>
         {books &&
-          (books.length > 0 ? (
-            books.map((book) => (
-              <Grid item key={book.etag}>
-                <BookCard data={book} key={book.id} />
-              </Grid>
-            ))
-          ) : (
-            <Typography variant="h4" sx={{ mx: 'auto' }}>
-              No results found
-            </Typography>
+          books.map((book) => (
+            <Grid item key={book.etag}>
+              <BookCard data={book} key={book.id} />
+            </Grid>
           ))}
       </Grid>
     </div>
