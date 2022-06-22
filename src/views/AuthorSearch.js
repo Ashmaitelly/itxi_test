@@ -44,7 +44,7 @@ export default function AuthorSearch() {
       <Box mt={2} mb={2}>
         <TextField
           id="outlined-basic"
-          label="Author Search"
+          label="Search for an author…"
           variant="outlined"
           style={{ width: '70%' }}
           value={search}
