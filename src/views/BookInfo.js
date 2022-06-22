@@ -20,11 +20,10 @@ const BookInfo = () => {
       )
       .then((res) => {
         setBook(res.data);
-        console.log(res.data);
         setLoaded(true);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [searchParams]);
 
   return (
     <div>

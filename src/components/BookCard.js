@@ -33,8 +33,18 @@ const BookCard = ({ data }) => {
           {title.length < 50 ? title : title.substring(0, 50) + '...'}{' '}
           {`(${volumeInfo.publishedDate})`}
         </Typography>
+        <Typography gutterBottom variant="h6" component="div">
+          {volumeInfo.averageRating
+            ? `${volumeInfo.averageRating}/5 ⭐`
+            : 'No ratings'}{' '}
+          {``}
+          {volumeInfo.ratingsCount &&
+            `(${volumeInfo.ratingsCount} rating${
+              volumeInfo.ratingsCount === 1 ? '' : 's'
+            })`}
+        </Typography>
         <Typography gutterBottom component="div">
-          by {volumeInfo.authors.join(', ')}
+          by {volumeInfo.authors && volumeInfo.authors.join(', ')}
         </Typography>
         <Typography component="div">{volumeInfo.publisher}</Typography>
       </CardContent>
