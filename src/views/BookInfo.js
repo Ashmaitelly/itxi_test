@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import BookAppBar from '../components/BookAppBar';
 import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
-import Box from '@mui/material/Box';
 import '../App.css';
 
-import PreviewInfo from '../components/PreviewInfo';
+import PreviewHeader from '../components/PreviewHeader';
+import PreviewFooter from '../components/PreviewFooter';
 
 const BookInfo = () => {
   //search params
@@ -28,23 +28,9 @@ const BookInfo = () => {
   return (
     <div>
       <BookAppBar />
-      <div className="Flex-Row">
-        <PreviewInfo />
-        <Box
-          sx={{
-            marginTop: 1,
-            marginLeft: 1,
-            width: '60vw',
-            height: '100vh',
-            backgroundColor: 'primary.dark',
-            '&:hover': {
-              backgroundColor: 'primary.main',
-              opacity: [0.9, 0.8, 0.7],
-            },
-          }}
-        >
-          Hello
-        </Box>
+      <div className="Flex-Col">
+        <PreviewHeader />
+        <PreviewFooter />
       </div>
     </div>
   );

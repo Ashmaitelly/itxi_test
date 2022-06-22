@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 
-.Flex-Row {
+.Flex-Col {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
