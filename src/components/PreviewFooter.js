@@ -1,8 +1,8 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
+import { Typography, Link } from '@mui/material';
 
-const PreviewFooter = ({ data }) => {
+const PreviewFooter = ({ pages, epub, pdf }) => {
   return (
     <Box
       sx={{
@@ -11,9 +11,11 @@ const PreviewFooter = ({ data }) => {
         justifyContent: 'space-between',
       }}
     >
-      <Typography variant="subtitle2">Page Count</Typography>
+      <Typography variant="subtitle2">{pages} Pages</Typography>
 
-      <Typography variant="subtitle2">Download: PDF EPUB</Typography>
+      <Typography variant="subtitle2">
+        Download: <Link href={pdf}>PDF</Link> <Link href={epub}>EPUB</Link>
+      </Typography>
     </Box>
   );
 };

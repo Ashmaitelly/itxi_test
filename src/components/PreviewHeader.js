@@ -2,17 +2,17 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 
-const PreviewHeader = ({ data }) => {
+const PreviewHeader = ({ title, authors, language, publisher }) => {
   return (
     <Box>
       <Typography variant="h5" m={1}>
-        Bismark Archapelligo (EN)
+        {title} ({language.toUpperCase()})
       </Typography>
       <Typography variant="h6" m={1}>
-        by Author
+        by {authors.join(', ')}
       </Typography>
       <Typography variant="caption">
-        Division of History, National Park Service
+        Publisher: {publisher || 'Not provided'}
       </Typography>
     </Box>
   );
