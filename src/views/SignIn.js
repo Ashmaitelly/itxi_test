@@ -34,22 +34,25 @@ export default function SignIn() {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Typography variant="h3">Book App</Typography>
-          <Avatar sx={{ m: 2, bgcolor: 'secondary.main' }}></Avatar>
-          <div id="google-signin" />
-        </Box>
-      </Container>
-    </ThemeProvider>
+    <Container component="main" maxWidth="xs">
+      <Typography variant="h3" sx={{ marginTop: 4 }}>
+        Book App
+      </Typography>
+      <Box
+        sx={{
+          marginTop: 4,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          border: 1,
+          borderRadius: '16px',
+          boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+        }}
+      >
+        <Typography variant="h4">Sign In</Typography>
+        <Avatar sx={{ m: 2, bgcolor: 'secondary.main' }}></Avatar>
+        <div id="google-signin" style={{ marginBottom: '10px' }} />
+      </Box>
+    </Container>
   );
 }
