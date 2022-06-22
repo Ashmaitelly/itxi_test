@@ -6,6 +6,7 @@ import '../App.css';
 
 import PreviewHeader from '../components/PreviewHeader';
 import PreviewFooter from '../components/PreviewFooter';
+import BookViewer from '../components/BookViewer';
 
 const BookInfo = () => {
   //search params
@@ -37,6 +38,7 @@ const BookInfo = () => {
             authors={book.volumeInfo.authors}
             publisher={book.volumeInfo.publisher}
           />
+          <BookViewer id={searchParams.get('id')} />
           <PreviewFooter
             pages={book.volumeInfo.pageCount}
             epub={book.accessInfo.epub.downloadLink}

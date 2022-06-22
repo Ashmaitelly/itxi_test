@@ -34,7 +34,7 @@ const BookCard = ({ data }) => {
           {`(${volumeInfo.publishedDate})`}
         </Typography>
         <Typography gutterBottom component="div">
-          by {volumeInfo.authors}
+          by {volumeInfo.authors.join(', ')}
         </Typography>
         <Typography component="div">{volumeInfo.publisher}</Typography>
       </CardContent>
