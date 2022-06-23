@@ -55,12 +55,9 @@ export default function AuthorSearch() {
       <Grid
         container
         spacing={1}
-        sx={{
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          alignItems: 'center',
-          width: { xs: '70%', md: '100%' },
-        }}
+        direction="row"
+        justifyContent="center"
+        alignItems="flex-start"
       >
         {books &&
           books.map((book) => (
