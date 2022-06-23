@@ -52,7 +52,11 @@ export default function AuthorSearch() {
         />
       </Box>
 
-      <Grid container spacing={1}>
+      <Grid
+        container
+        spacing={1}
+        sx={{ marginLeft: 'auto', marginRight: 'auto', alignItems: 'center' }}
+      >
         {books &&
           books.map((book) => (
             <Grid item key={book.etag}>

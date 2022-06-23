@@ -17,7 +17,7 @@ const BookCard = ({ data }) => {
   };
   return (
     <Card
-      sx={{ width: '19vw' }}
+      sx={{ width: '240px' }}
       className="Clickable"
       onClick={() => handleClick()}
     >
@@ -30,7 +30,7 @@ const BookCard = ({ data }) => {
       />
       <CardContent className="Background">
         <Typography gutterBottom variant="h5" component="div">
-          {title.length < 50 ? title : title.substring(0, 50) + '...'}{' '}
+          {title.length < 30 ? title : title.substring(0, 30) + '...'}{' '}
           {`(${volumeInfo.publishedDate})`}
         </Typography>
         <Typography gutterBottom variant="h6" component="div">
