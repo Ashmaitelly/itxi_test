@@ -1,22 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import Avatar from '@mui/material/Avatar';
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Typography } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-
-const theme = createTheme();
 
 export default function SignIn() {
   //navigation hook
   const navigate = useNavigate();
   //set user
-  const callbackResponse = (response) => {
-    localStorage.setItem('user', response.credential);
-    navigate('/search');
-  };
+  const callbackResponse = useCallback(
+    (response) => {
+      localStorage.setItem('user', response.credential);
+      navigate('/search');
+    },
+    [navigate]
+  );
 
   useEffect(() => {
     if (localStorage.getItem('user')) {
@@ -31,7 +30,7 @@ export default function SignIn() {
       theme: 'outline',
       size: 'large',
     });
-  }, []);
+  }, [callbackResponse, navigate]);
 
   return (
     <Container component="main" maxWidth="xs">
