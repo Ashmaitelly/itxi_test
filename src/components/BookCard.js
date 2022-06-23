@@ -48,7 +48,8 @@ const BookCard = ({ data }) => {
         <Typography gutterBottom component="div">
           by{' '}
           {`${volumeInfo.authors && volumeInfo.authors[0]} ${
-            volumeInfo.authors.length > 2 ? 'et al.' : ''
+            volumeInfo.authors &&
+            (volumeInfo.authors.length > 2 ? 'et al.' : '')
           }`}
         </Typography>
         <Typography component="div">

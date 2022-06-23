@@ -13,7 +13,8 @@ export default function AuthorSearch() {
   //books array state
   const [books, setBooks] = useState([]);
   //page numbers
-  const [pages] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const [total, setTotal] = useState(0);
+  const [pages, setPages] = useState([]);
   const [bIndex, setBIndex] = useState(0);
   const [clicked, setClicked] = useState(1);
   //set search on load
@@ -36,13 +37,22 @@ export default function AuthorSearch() {
         )
         .then((res) => {
           setBooks(res.data.items);
-          console.log(res.data.items);
+          setTotal(res.data.totalItems);
+          console.log(total);
         })
         .catch((err) => console.log(err));
     } else {
       setBooks([]);
     }
-  }, [search, bIndex]);
+  }, [search, bIndex, total]);
+  //set pages useEffect
+  useEffect(() => {
+    let temp = [];
+    for (let i = 1; i <= Math.ceil(total / 40); i++) {
+      temp.push(i);
+    }
+    setPages(temp);
+  }, [total]);
 
   return (
     <div className="Flex-Col">
