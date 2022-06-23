@@ -17,7 +17,7 @@ const BookCard = ({ data }) => {
   };
   return (
     <Card
-      sx={{ width: '270px' }}
+      sx={{ width: '19vw' }}
       className="Clickable"
       onClick={() => handleClick()}
     >
