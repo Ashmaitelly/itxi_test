@@ -5,12 +5,17 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import BookCard from '../components/BookCard';
 import Grid from '@mui/material/Grid';
+import { Typography } from '@mui/material';
 
 export default function AuthorSearch() {
   //search state
   const [search, setSearch] = useState('');
   //books array state
   const [books, setBooks] = useState([]);
+  //page numbers
+  const [pages] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const [bIndex, setBIndex] = useState(0);
+  const [clicked, setClicked] = useState(1);
   //set search on load
   useEffect(() => {
     setSearch(localStorage.getItem('search') || '');
@@ -26,7 +31,8 @@ export default function AuthorSearch() {
             '+'
           )}"&filter=free-ebooks` +
             `&key=${process.env.REACT_APP_API_KEY}` +
-            '&orderBy=newest&maxResults=40'
+            '&orderBy=newest&maxResults=40' +
+            `&startIndex=${bIndex}`
         )
         .then((res) => {
           setBooks(res.data.items);
@@ -36,7 +42,7 @@ export default function AuthorSearch() {
     } else {
       setBooks([]);
     }
-  }, [search]);
+  }, [search, bIndex]);
 
   return (
     <div className="Flex-Col">
@@ -51,7 +57,30 @@ export default function AuthorSearch() {
           onChange={(e) => setSearch(e.target.value)}
         />
       </Box>
-
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
+        {/* map here */}
+        {pages.map((page, index) => (
+          <Typography
+            key={index}
+            className="Clickable"
+            variant="h6"
+            mx={1}
+            my={2}
+            style={{ color: clicked === page ? '#00f' : '#000' }}
+            onClick={() => {
+              setBIndex(page * 40 - 40);
+              setClicked(page);
+            }}
+          >
+            {`${page}`}
+          </Typography>
+        ))}
+      </Grid>
       <Grid
         container
         spacing={1}

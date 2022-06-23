@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 const BookCard = ({ data }) => {
   //state items
   const [volumeInfo] = useState(data.volumeInfo);
-  const [title] = useState(volumeInfo.title);
   //navigate hook
   const navigate = useNavigate();
   //navigate on click
@@ -16,21 +15,24 @@ const BookCard = ({ data }) => {
     navigate(`/book/?id=${data.id}`);
   };
   return (
-    <Card
-      sx={{ width: '240px' }}
-      className="Clickable"
-      onClick={() => handleClick()}
-    >
+    <Card className="Clickable" onClick={() => handleClick()}>
       <CardMedia
         component="img"
-        height="190"
-        width="160"
+        height="330"
+        width="230"
         image={volumeInfo.imageLinks.thumbnail}
         alt={volumeInfo.title}
       />
-      <CardContent className="Background">
+      <CardContent
+        sx={{
+          width: '230px',
+          height: '190px',
+        }}
+      >
         <Typography gutterBottom variant="h5" component="div">
-          {title.length < 30 ? title : title.substring(0, 30) + '...'}{' '}
+          {volumeInfo.title.length < 30
+            ? volumeInfo.title
+            : volumeInfo.title.substring(0, 30) + '...'}{' '}
           {`(${volumeInfo.publishedDate})`}
         </Typography>
         <Typography gutterBottom variant="h6" component="div">
@@ -44,9 +46,17 @@ const BookCard = ({ data }) => {
             })`}
         </Typography>
         <Typography gutterBottom component="div">
-          by {volumeInfo.authors && volumeInfo.authors.join(', ')}
+          by{' '}
+          {`${volumeInfo.authors && volumeInfo.authors[0]} ${
+            volumeInfo.authors.length > 2 ? 'et al.' : ''
+          }`}
         </Typography>
-        <Typography component="div">{volumeInfo.publisher}</Typography>
+        <Typography component="div">
+          {volumeInfo.publisher &&
+            (volumeInfo.publisher.length < 30
+              ? volumeInfo.publisher
+              : volumeInfo.publisher.substring(0, 30) + '...')}
+        </Typography>
       </CardContent>
     </Card>
   );
