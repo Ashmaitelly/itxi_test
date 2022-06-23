@@ -69,6 +69,20 @@ export default function AuthorSearch() {
       </Box>
       <Grid
         container
+        spacing={1}
+        direction="row"
+        justifyContent="center"
+        alignItems="flex-start"
+      >
+        {books &&
+          books.map((book) => (
+            <Grid item key={book.etag}>
+              <BookCard data={book} key={book.id} />
+            </Grid>
+          ))}
+      </Grid>
+      <Grid
+        container
         direction="row"
         justifyContent="center"
         alignItems="center"
@@ -85,25 +99,12 @@ export default function AuthorSearch() {
             onClick={() => {
               setBIndex(page * 40 - 40);
               setClicked(page);
+              window.scrollTo(0, 0);
             }}
           >
             {`${page}`}
           </Typography>
         ))}
-      </Grid>
-      <Grid
-        container
-        spacing={1}
-        direction="row"
-        justifyContent="center"
-        alignItems="flex-start"
-      >
-        {books &&
-          books.map((book) => (
-            <Grid item key={book.etag}>
-              <BookCard data={book} key={book.id} />
-            </Grid>
-          ))}
       </Grid>
     </div>
   );
