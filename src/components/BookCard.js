@@ -21,7 +21,7 @@ const BookCard = ({ data }) => {
         height="330"
         width="230"
         image={volumeInfo.imageLinks && volumeInfo.imageLinks.thumbnail}
-        alt={volumeInfo.title}
+        alt={volumeInfo.title || ''}
       />
       <CardContent
         sx={{
