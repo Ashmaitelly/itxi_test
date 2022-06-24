@@ -38,7 +38,6 @@ export default function AuthorSearch() {
         .then((res) => {
           setBooks(res.data.items);
           setTotal(res.data.totalItems);
-          console.log(total);
         })
         .catch((err) => console.log(err));
     } else {
