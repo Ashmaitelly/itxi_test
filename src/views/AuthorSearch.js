@@ -47,6 +47,7 @@ export default function AuthorSearch() {
   }, [search, bIndex, total]);
   //set pages useEffect
   useEffect(() => {
+    setClicked(1);
     let temp = [];
     for (let i = 1; i <= Math.ceil(total / 40); i++) {
       temp.push(i);

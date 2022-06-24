@@ -20,7 +20,7 @@ const BookCard = ({ data }) => {
         component="img"
         height="330"
         width="230"
-        image={volumeInfo.imageLinks.thumbnail}
+        image={volumeInfo.imageLinks && volumeInfo.imageLinks.thumbnail}
         alt={volumeInfo.title}
       />
       <CardContent
