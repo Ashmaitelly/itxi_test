@@ -42,6 +42,7 @@ export default function AuthorSearch() {
         .catch((err) => console.log(err));
     } else {
       setBooks([]);
+      setTotal(0);
     }
   }, [search, bIndex, total]);
   //set pages useEffect
