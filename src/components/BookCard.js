@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
-const BookCard = ({ data }) => {
-  //state items
-  const [volumeInfo] = useState(data.volumeInfo);
+const BookCard = ({ volumeInfo, id }) => {
   //navigate hook
   const navigate = useNavigate();
   //navigate on click
   const handleClick = () => {
-    navigate(`/book/?id=${data.id}`);
+    navigate(`/book/?id=${id}`);
+  };
+  // truncate string
+  const truncString = (text) => {
+    return text.length < 30 ? text : text.substring(0, 30) + '...';
   };
   return (
     <Card className="Clickable" onClick={() => handleClick()}>
@@ -30,9 +32,7 @@ const BookCard = ({ data }) => {
         }}
       >
         <Typography gutterBottom variant="h5" component="div">
-          {volumeInfo.title.length < 30
-            ? volumeInfo.title
-            : volumeInfo.title.substring(0, 30) + '...'}{' '}
+          {volumeInfo.title && truncString(volumeInfo.title)}{' '}
           {`(${volumeInfo.publishedDate})`}
         </Typography>
         <Typography gutterBottom variant="h6" component="div">
@@ -53,10 +53,7 @@ const BookCard = ({ data }) => {
           }`}
         </Typography>
         <Typography component="div">
-          {volumeInfo.publisher &&
-            (volumeInfo.publisher.length < 30
-              ? volumeInfo.publisher
-              : volumeInfo.publisher.substring(0, 30) + '...')}
+          {volumeInfo.publisher && truncString(volumeInfo.publisher)}
         </Typography>
       </CardContent>
     </Card>

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import BookAppBar from '../components/BookAppBar';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import axios from 'axios';
 import BookCard from '../components/BookCard';
 import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
+import { GetInfo } from '../functions/GetInfo';
 
 export default function AuthorSearch() {
   //search state
@@ -25,21 +25,23 @@ export default function AuthorSearch() {
   useEffect(() => {
     if (search !== '') {
       localStorage.setItem('search', search);
-      axios
-        .get(
-          `https://www.googleapis.com/books/v1/volumes?q=inauthor:"${search.replace(
-            ' ',
-            '+'
-          )}"&filter=free-ebooks` +
-            `&key=${process.env.REACT_APP_API_KEY}` +
-            '&orderBy=newest&maxResults=40' +
-            `&startIndex=${bIndex}`
-        )
+      GetInfo(
+        `https://www.googleapis.com/books/v1/volumes?q=inauthor:"${search.replace(
+          ' ',
+          '+'
+        )}"&filter=free-ebooks` +
+          `&key=${process.env.REACT_APP_API_KEY}` +
+          '&orderBy=newest&maxResults=40' +
+          `&startIndex=${bIndex}`
+      )
         .then((res) => {
           setBooks(res.data.items);
           setTotal(res.data.totalItems);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          alert('Error getting book data');
+          setSearch('');
+        });
     } else {
       setBooks([]);
       setTotal(0);
@@ -78,7 +80,11 @@ export default function AuthorSearch() {
         {books &&
           books.map((book) => (
             <Grid item key={book.etag}>
-              <BookCard data={book} key={book.id} />
+              <BookCard
+                volumeInfo={book.volumeInfo}
+                id={book.id}
+                key={book.id}
+              />
             </Grid>
           ))}
       </Grid>
