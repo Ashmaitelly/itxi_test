@@ -22,14 +22,21 @@ export default function SignIn() {
       navigate('/search');
     }
     /* global google */
-    google.accounts.id.initialize({
-      client_id: process.env.REACT_APP_CLIENT_ID,
-      callback: callbackResponse,
-    });
-    google.accounts.id.renderButton(document.getElementById('google-signin'), {
-      theme: 'outline',
-      size: 'large',
-    });
+    try {
+      google.accounts.id.initialize({
+        client_id: process.env.REACT_APP_CLIENT_ID,
+        callback: callbackResponse,
+      });
+      google.accounts.id.renderButton(
+        document.getElementById('google-signin'),
+        {
+          theme: 'outline',
+          size: 'large',
+        }
+      );
+    } catch (err) {
+      navigate(0);
+    }
   }, [callbackResponse, navigate]);
 
   return (
